@@ -22,6 +22,7 @@ pytestmark = pytest.mark.dependency  # NÃO REMOVA ESSA LINHA
 def test_converter(hexadecimal, decimal):
     assert hexadecimal_to_decimal(hexadecimal) == decimal
 
+
 @pytest.mark.parametrize(
     "hexadecimal, decimal",
     [
