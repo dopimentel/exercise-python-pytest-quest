@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from src.hex_converter import (  # noqa: F401
@@ -23,3 +24,11 @@ def test_capsys(capsys):
     captured = capsys.readouterr()
     assert captured.out == "10\n"
     assert captured.err == ""
+
+
+def test_tmp_path(tmp_path):
+    output_path = tmp_path / "output.txt"
+    write_hexadecimal_to_decimal("a", output_path)
+    assert os.path.exists(output_path)
+    with open(output_path) as f:
+        assert f.read() == "10"
